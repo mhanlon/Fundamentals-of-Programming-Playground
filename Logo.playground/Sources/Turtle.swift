@@ -21,7 +21,7 @@ public class Turtle {
     
     public var currentPoint: CGPoint!
     
-    public init(name: String?, avatar: String?) {
+    public init(name: String?, avatar: Character?) {
         self.name = name
         self.penColor = .black
         self.backgroundColor = .white
@@ -30,19 +30,19 @@ public class Turtle {
         self.heading = 0.0 // By default we will be heading "up"
         self.currentPoint = CGPoint(x: 0.0, y:0.0)
         if let av = avatar {
-            self.avatar.setAvatar(av, size:24.0) // 17 is the system default size
+            self.avatar.setAvatar(String(av), size:24.0) // 17 is the system default size
         }
     }
     public convenience init(name: String?) {
         self.init(name: name, avatar: nil)
     }
     
-    public func setAvatar(_ avatar: String) {
-        self.avatar.setAvatar(avatar, size:nil)
+    public func setAvatar(_ avatar: Character) {
+        self.avatar.setAvatar(String(avatar), size:nil)
     }
 
-    public func setAvatar(_ avatar: String, size: Double) {
-        self.avatar.setAvatar(avatar, size:size)
+    public func setAvatar(_ avatar: Character, size: Double) {
+        self.avatar.setAvatar(String(avatar), size:size)
     }
 
     public func forward(distance: Float) {

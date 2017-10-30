@@ -1,12 +1,17 @@
 import Foundation
 import UIKit
 
+let kDegreesHelperViewTag = 9007
+
 public class TurtleView: UIView, CAAnimationDelegate {
     public var turtles = [Turtle]()
     public var animations:[(CALayer, CAAnimation, UIView?, CGAffineTransform?, CGPoint?)] = []
 //    public var speed = 0.00001 // For circles, especially...
     public var speed = 0.1
-    
+    public var degreesHelperView: UIImageView?
+    public var needsDegreesHelper = false // Don't show the degree helper by default
+    var isShowingDegreesHelper = false
+
     public func addTurtle(_ turtle:Turtle) {
         turtle.currentPoint = self.center
         // No need to set the heading, which is set by default inside the turtle,
@@ -20,9 +25,27 @@ public class TurtleView: UIView, CAAnimationDelegate {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
+        self.degreesHelperView = UIImageView(image: UIImage(named: "DegreesHelper.png", in: nil, compatibleWith: nil))
+        self.degreesHelperView!.frame = CGRect(x: 0, y:0, width: 200, height: 200)
+        self.toggleDegreesHelper()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
+    }
+    
+    public func showDegreesHelper() {
+        self.addSubview(self.degreesHelperView!)
+    }
+    public func hideDegreesHelper() {
+        self.degreesHelperView!.removeFromSuperview()
+    }
+    public func toggleDegreesHelper() {
+        if ( self.isShowingDegreesHelper ) {
+            self.hideDegreesHelper()
+        } else {
+            self.showDegreesHelper()
+        }
+        self.isShowingDegreesHelper = !self.isShowingDegreesHelper
     }
     // The view will, when drawing the view, query the turtles for their command stacks.
     // This may cause un-Logo-like behavior, as we will process each turtle in our list
@@ -36,7 +59,6 @@ public class TurtleView: UIView, CAAnimationDelegate {
     // so lines you might expect to be in front of another might not be.
     public override func draw(_ rect: CGRect) {
         // TODO: Draw a grid view?
-                
         super.draw(rect)
     }
     func positionAvatarForTurtle(turtle: Turtle) {
@@ -55,6 +77,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
             // Dequeue the commands from our turtles and start drawing them
             let commandStack = turtle.commandStack
             for command in commandStack {
+                var isHomeCommand = false
                 let startingPoint = turtle.currentPoint
                 var distance = 0.0
                 switch command {
@@ -77,6 +100,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 case .home:
                     turtle.currentPoint = self.center
                     turtle.heading = 0.0
+                    isHomeCommand = true
                 case .setcolor(let color):
                     turtle.penColor = color
                 case .setbg(let color):
@@ -95,14 +119,15 @@ public class TurtleView: UIView, CAAnimationDelegate {
                     turtle.isTurtleVisible = false
                 }
                 
+                var pt = startingPoint!
                 if ( turtle.currentPoint != startingPoint ) {
                     // We've gotten the home command... set our center point and exit early... this needs to be added as a command and instant animation
+                    pt = self.center
+                } else {
+                    // Update our turtle's position based on our commands
+                    pt.x = pt.x + CGFloat(sin(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
+                    pt.y = pt.y - CGFloat(cos(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
                 }
-                // Update our turtle's position based on our commands
-                var pt = startingPoint!
-                pt.x = pt.x + CGFloat(sin(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
-                pt.y = pt.y - CGFloat(cos(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
-                
                 var penColor = turtle.penColor
                 if ( turtle.penState == .penerase ) {
                     penColor = turtle.backgroundColor   // I'm not so sure this is right, maybe we need to delete old
@@ -113,9 +138,12 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 turtle.currentPoint = pt
                 let path = UIBezierPath()
                 path.move(to:startingPoint!)
-                if ( turtle.penState != .penup ) {
+                if ( turtle.penState != .penup && !isHomeCommand ) {
                     path.addLine(to:turtle.currentPoint)
+                } else {
+                    path.move(to:turtle.currentPoint)
                 }
+                
                 let shapeLayer = CAShapeLayer()
                 shapeLayer.frame = self.layer.bounds
                 shapeLayer.path = path.cgPath
@@ -169,10 +197,15 @@ public class TurtleView: UIView, CAAnimationDelegate {
         animation.duration = self.speed
         layer.add(animation, forKey: "strokeEnd")
         
+        // TODO: If the animation takes the element off screen should we bounce the avatar a bit and stop them?
         UIView.animate(withDuration: self.speed, animations: {
             // Turtles need to follow the path, too...
             avatar?.transform = transform!
             avatar?.frame.origin = point!
+            //
+            if ( self.isShowingDegreesHelper ) {
+                self.degreesHelperView!.transform = transform!
+            }
         })
 
         setNeedsLayout()

@@ -1,6 +1,9 @@
-//:**Goal:** Meet Spot
-//: This playground is designed to introduce you to Spot, a turtle with a pen attached, somewhat mysteriously, to its underside. Don't ask me how it got there.
-
+/*:
+ [Previous](@previous)
+ 
+ **Goal:** Play time!
+ Take your customized turtle for a spin!
+ */
 //#-hidden-code
 import UIKit
 import PlaygroundSupport
@@ -31,30 +34,32 @@ public class TurtleViewController: UIViewController {
 //#-end-hidden-code
 
 //: Let's get a turtle for our drawing.
-let spot = Turtle(name:"Spot", avatar: /*#-editable-code*/"🐢"/*#-end-editable-code*/)
-//: We can tell Spot to do certain things, let's send him forward, turn him right 90 degrees, and then go forward again and turn again.
+let spot = Turtle(name:"Spot", avatar: "🐢")
 spot.forward(distance: 100)
 spot.right(turnDegrees: 90)
 spot.forward(distance: 100)
 spot.right(turnDegrees: 90)
 
-//: We can also tell Spot to change the pen color or the background color of the whole scene. We can also change the pen width.
 spot.setColor(color:/*#-editable-code*/ #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)/*#-end-editable-code*/)
 spot.setPenSize(penSize: 4)
 
-//: To see our new configuration, we can ask Spot to go forward again and finish off our square.
 spot.forward(distance: 100)
 spot.right(turnDegrees: 90)
 spot.forward(distance: 100)
-//: Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
+spot.home()
+spot.right(turnDegrees: 180)
+spot.forward(distance: 90)
+spot.right(turnDegrees: 45)
+spot.forward(distance: 90)
+spot.home()
 //#-hidden-code
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
 vc.setSpeed(0.2)
-//#-end-hidden-code
-//: And then add our turtle to that view controller.
 vc.addTurtle(spot)
 
 
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = vc
+
+//#-end-hidden-code
