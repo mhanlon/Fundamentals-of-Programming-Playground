@@ -7,7 +7,7 @@
 //#-hidden-code
 import UIKit
 import PlaygroundSupport
-
+import Foundation
 
 
 public class TurtleViewController: UIViewController {
@@ -34,13 +34,13 @@ public class TurtleViewController: UIViewController {
 //#-end-hidden-code
 
 //: Let's get a turtle for our drawing.
-let spot = Turtle(name:"Spot", avatar: "🐢")
+let spot = Turtle(name:"Spot", avatar: "🐒")
 spot.forward(distance: 100)
 spot.right(turnDegrees: 90)
 spot.forward(distance: 100)
 spot.right(turnDegrees: 90)
 
-spot.setColor(color:/*#-editable-code*/ #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)/*#-end-editable-code*/)
+spot.setColor(color:#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))
 spot.setPenSize(penSize: 4)
 
 spot.forward(distance: 100)
@@ -52,6 +52,13 @@ spot.forward(distance: 90)
 spot.right(turnDegrees: 45)
 spot.forward(distance: 90)
 spot.home()
+
+for _ in 1...10 {
+    spot.forward(distance: 10)
+    
+    spot.right(turnDegrees: 36)
+}
+
 //#-hidden-code
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...

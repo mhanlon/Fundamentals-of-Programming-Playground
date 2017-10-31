@@ -34,7 +34,7 @@ public class TurtleViewController: UIViewController {
 //#-end-hidden-code
 
 //: Let's get a turtle for our drawing.
-let spot = Turtle(name:"Spot", avatar: /*#-editable-code*/"🐢"/*#-end-editable-code*/)
+let spot = Turtle(name:"Spot", avatar: /*#-editable-code*/"🐒"/*#-end-editable-code*/)
 //: We can tell Spot to do certain things, let's send him forward, turn him right 90 degrees, and then go forward again and turn again.
 spot.forward(distance: 100)
 spot.right(turnDegrees: 90)

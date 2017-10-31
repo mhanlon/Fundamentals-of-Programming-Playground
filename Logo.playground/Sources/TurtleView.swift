@@ -138,7 +138,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 turtle.currentPoint = pt
                 let path = UIBezierPath()
                 path.move(to:startingPoint!)
-                if ( turtle.penState != .penup && !isHomeCommand ) {
+                if ( turtle.penState != .penup/* && !isHomeCommand*/ ) {
                     path.addLine(to:turtle.currentPoint)
                 } else {
                     path.move(to:turtle.currentPoint)
@@ -161,18 +161,17 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 var transform: CGAffineTransform?
                 var point: CGPoint?
                 if ( turtle.isTurtleVisible ) {
-                    let radians = ( turtle.heading / 180.0 ) * .pi;
+                    let radians = ( turtle.heading * ( .pi / 180.0 ) )
                     avatar = self.viewWithTag(turtle.tag!)
                     if avatar != nil {
-                        point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
                         avatar!.layer.zPosition = .greatestFiniteMagnitude
                     } else {
                         avatar = turtle.avatar
-                        point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
                         avatar!.tag = turtle.tag!
                         
                         self.addSubview(avatar!)
                     }
+                    point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
                     transform = CGAffineTransform(rotationAngle: CGFloat(radians))
                 }
                 self.animations.append( ( shapeLayer, strokeEndAnimation, avatar, transform, point ) )
