@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='raw'>
-    <pages>
-        <page name='01-Introduction'/>
-        <page name='02-More Commands'/>
-        <page name='03-Making a square'/>
-        <page name='04-Using a loop'/>
-        <page name='05-Debugging'/>
-        <page name='06-More Debugging'/>
-        <page name='07-Meet Spot'/>
-        <page name='10-Go to town'/>
-    </pages>
-</playground>
+<playground version='6.0' target-platform='ios' display-mode='raw'/>

@@ -2,10 +2,8 @@
  [Previous](@previous)
  
  **Goal:** Find and fix a bug in a piece of code.
-
- // TODO: Fix language
  
- So far we've been ticking along, drawing lines and shapes. But what happens when we try to tell the computer something it doesn't know what to do with? Even if we do it by accident, a computer doesn't know what to do with commands other than the ones it's been taught.
+ So far we've been getting the hang of drawing lines and shapes with simple commands. But what happens when we try to tell the computer to do something it doesn't understand? Even if we do it by accident, a computer doesn't know what to do with commands other than the ones it's been taught.
  
  So how do we fix a case where we mistype something and the computer doesn't know what we're talking about?
  

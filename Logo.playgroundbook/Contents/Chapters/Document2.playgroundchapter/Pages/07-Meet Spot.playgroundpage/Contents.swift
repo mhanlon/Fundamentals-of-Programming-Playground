@@ -2,6 +2,7 @@
  [Previous](@previous)
  
  **Goal:** Meet Spot
+ 
  This playground is designed to introduce you to Spot, a turtle with a pen attached, somewhat mysteriously, to its underside. Don't ask me how it got there.
 */
 //#-hidden-code

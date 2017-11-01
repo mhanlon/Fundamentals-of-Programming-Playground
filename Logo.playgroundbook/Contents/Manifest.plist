@@ -5,7 +5,6 @@
 	<key>Chapters</key>
 	<array>
 		<string>Document1.playgroundchapter</string>
-		<string>Document2.playgroundchapter</string>
 	</array>
 	<key>ContentIdentifier</key>
 	<string>com.wickedpearprogramming.playgrounds.logo</string>

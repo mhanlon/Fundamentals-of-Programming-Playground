@@ -6,7 +6,7 @@ public class TurtleViewController: UIViewController {
         super.viewDidLoad()
         self.view = TurtleView(frame: CGRect(x: 0.0, y: 0.0, width: 500, height: 500))
         let turtleView = self.view as! TurtleView
-        turtleView.hideDegreesHelper()
+        turtleView.showDegreesHelper()
     }
     
     public func setSpeed(_ speed: Double) {
@@ -17,6 +17,21 @@ public class TurtleViewController: UIViewController {
         let view = self.view as! TurtleView
         view.addTurtle(turtle)
         view.processCommandStack()
+    }
+    
+    public func showDegreesHelper() {
+        let turtleView = self.view as! TurtleView
+        turtleView.showDegreesHelper()
+    }
+
+    public func hideDegreesHelper() {
+        let turtleView = self.view as! TurtleView
+        turtleView.hideDegreesHelper()
+    }
+
+    public func toggleDegreesHelper() {
+        let turtleView = self.view as! TurtleView
+        turtleView.toggleDegreesHelper()
     }
 }
 
