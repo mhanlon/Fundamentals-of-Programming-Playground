@@ -1,11 +1,17 @@
 import Foundation
 import UIKit
 
+let kDegreesHelperViewTag = 9007
+
 public class TurtleView: UIView, CAAnimationDelegate {
     public var turtles = [Turtle]()
     public var animations:[(CALayer, CAAnimation, UIView?, CGAffineTransform?, CGPoint?)] = []
-//    public var speed = 0.00001 // For circles, especially...
+    //    public var speed = 0.00001 // For circles, especially...
     public var speed = 0.1
+    public var degreesHelperView: UIImageView?
+    var gridView: GridView?
+    public var needsDegreesHelper = false // Don't show the degree helper by default
+    var isShowingDegreesHelper = false
     
     public func addTurtle(_ turtle:Turtle) {
         turtle.currentPoint = self.center
@@ -20,9 +26,30 @@ public class TurtleView: UIView, CAAnimationDelegate {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
+        // TODO: Add the grid view
+        self.degreesHelperView = UIImageView(image: UIImage(named: "DegreesHelper.png", in: nil, compatibleWith: nil))
+        self.degreesHelperView!.frame = CGRect(x: 0, y:0, width: 200, height: 200)
+        self.toggleDegreesHelper()
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
+        self.gridView = GridView(frame: self.frame)
+        self.addSubview(self.gridView!)
+    }
+    
+    public func showDegreesHelper() {
+        self.addSubview(self.degreesHelperView!)
+    }
+    public func hideDegreesHelper() {
+        self.degreesHelperView!.removeFromSuperview()
+    }
+    public func toggleDegreesHelper() {
+        if ( self.isShowingDegreesHelper ) {
+            self.hideDegreesHelper()
+        } else {
+            self.showDegreesHelper()
+        }
+        self.isShowingDegreesHelper = !self.isShowingDegreesHelper
     }
     // The view will, when drawing the view, query the turtles for their command stacks.
     // This may cause un-Logo-like behavior, as we will process each turtle in our list
@@ -36,17 +63,16 @@ public class TurtleView: UIView, CAAnimationDelegate {
     // so lines you might expect to be in front of another might not be.
     public override func draw(_ rect: CGRect) {
         // TODO: Draw a grid view?
-                
         super.draw(rect)
     }
     func positionAvatarForTurtle(turtle: Turtle) {
         let avatar = turtle.avatar
         avatar.frame.origin = CGPoint(x: ( turtle.currentPoint.x - ( avatar.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar.frame.size.height / 2 )))
         avatar.tag = turtle.tag!
-
+        
         let radians = ( turtle.heading / 180.0 ) * .pi;
         avatar.transform = CGAffineTransform(rotationAngle: CGFloat(radians))
-
+        
         self.addSubview(avatar)
     }
     
@@ -95,14 +121,15 @@ public class TurtleView: UIView, CAAnimationDelegate {
                     turtle.isTurtleVisible = false
                 }
                 
+                var pt = startingPoint!
                 if ( turtle.currentPoint != startingPoint ) {
                     // We've gotten the home command... set our center point and exit early... this needs to be added as a command and instant animation
+                    pt = self.center
+                } else {
+                    // Update our turtle's position based on our commands
+                    pt.x = pt.x + CGFloat(sin(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
+                    pt.y = pt.y - CGFloat(cos(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
                 }
-                // Update our turtle's position based on our commands
-                var pt = startingPoint!
-                pt.x = pt.x + CGFloat(sin(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
-                pt.y = pt.y - CGFloat(cos(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
-                
                 var penColor = turtle.penColor
                 if ( turtle.penState == .penerase ) {
                     penColor = turtle.backgroundColor   // I'm not so sure this is right, maybe we need to delete old
@@ -113,9 +140,12 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 turtle.currentPoint = pt
                 let path = UIBezierPath()
                 path.move(to:startingPoint!)
-                if ( turtle.penState != .penup ) {
+                if ( turtle.penState != .penup/* && !isHomeCommand*/ ) {
                     path.addLine(to:turtle.currentPoint)
+                } else {
+                    path.move(to:turtle.currentPoint)
                 }
+                
                 let shapeLayer = CAShapeLayer()
                 shapeLayer.frame = self.layer.bounds
                 shapeLayer.path = path.cgPath
@@ -133,22 +163,21 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 var transform: CGAffineTransform?
                 var point: CGPoint?
                 if ( turtle.isTurtleVisible ) {
-                    let radians = ( turtle.heading / 180.0 ) * .pi;
+                    let radians = ( turtle.heading * ( .pi / 180.0 ) )
                     avatar = self.viewWithTag(turtle.tag!)
                     if avatar != nil {
-                        point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
                         avatar!.layer.zPosition = .greatestFiniteMagnitude
                     } else {
                         avatar = turtle.avatar
-                        point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
                         avatar!.tag = turtle.tag!
                         
                         self.addSubview(avatar!)
                     }
+                    point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
                     transform = CGAffineTransform(rotationAngle: CGFloat(radians))
                 }
                 self.animations.append( ( shapeLayer, strokeEndAnimation, avatar, transform, point ) )
-
+                
             }
         }
         // Run the first animation and add the first layer...
@@ -169,14 +198,65 @@ public class TurtleView: UIView, CAAnimationDelegate {
         animation.duration = self.speed
         layer.add(animation, forKey: "strokeEnd")
         
+        // TODO: If the animation takes the element off screen should we bounce the avatar a bit and stop them?
         UIView.animate(withDuration: self.speed, animations: {
             // Turtles need to follow the path, too...
             avatar?.transform = transform!
             avatar?.frame.origin = point!
+            //
+            if ( self.isShowingDegreesHelper ) {
+                self.degreesHelperView!.transform = transform!
+            }
         })
-
+        
         setNeedsLayout()
     }
 }
 
-
+class GridView: UIView {
+    var horizontalLines:[UIView] = []
+    var verticalLines:[UIView] = []
+    var lineWidth = 4
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.layer.backgroundColor = UIColor.clear.cgColor
+        self.horizontalLines = self.fourLines()
+        self.verticalLines = self.fourLines()
+        let lines = self.horizontalLines + (self.verticalLines)
+        for line in lines {
+            self.addSubview(line)
+        }
+    }
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder:aDecoder)
+    }
+    
+    public override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        let width = self.frame.size.width
+        let thirdOfWidth = ( width / 3 )
+        
+        for i in 0...3  {
+            let horizontalLine = self.horizontalLines[i]
+            let verticalLine = self.verticalLines[i]
+            horizontalLine.frame = CGRect( x: 0, y: ( CGFloat(i) * thirdOfWidth ), width: width, height: 0.5 )
+            var verticalRect = CGRect( x: ( CGFloat(i) * thirdOfWidth ), y: 0, width: 0.5, height: width )
+            if ( i == 3 ) {
+                verticalRect.origin.x = verticalRect.origin.x - 0.5
+            }
+            verticalLine.frame = verticalRect
+        }
+    }
+    
+    
+    func fourLines() -> [UIView] {
+        var lines:[UIView] = []
+        for _ in 1...4 {
+            let view = UIView()
+            view.layer.backgroundColor = UIColor.black.cgColor
+            lines.append(view)
+        }
+        return lines
+    }
+}
