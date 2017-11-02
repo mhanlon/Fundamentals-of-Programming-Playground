@@ -78,9 +78,18 @@ public class TurtleViewController: UIViewController {
         view.processCommandStack()
     }
 }
+// Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
+let vc = TurtleViewController()
+// : We can even set the speed at which our turtle draws our commands...
+vc.setSpeed(0.4)
+func setSpeed(_ speed: Double) {
+    vc.setSpeed(speed)
+}
+
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:))
+//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:))
 //#-code-completion(literal, show, .gray, .blue, .red, .green, .purple, .yellow, .orange)
+//#-code-completion(keyword, show, for)
 //#-end-hidden-code
 
 //#-editable-code
@@ -89,16 +98,12 @@ public class TurtleViewController: UIViewController {
 
 //#-hidden-code
 
-// Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
-let vc = TurtleViewController()
-// : We can even set the speed at which our turtle draws our commands...
-vc.setSpeed(0.4)
 // And then add our turtle to that view controller.
 vc.addTurtle(turtle)
 
-
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = vc
+// We'll add the next when we add the next chapter...: [Next](@next)
 //#-end-hidden-code
 
-// We'll add the next when we add the next chapter...: [Next](@next)
+
