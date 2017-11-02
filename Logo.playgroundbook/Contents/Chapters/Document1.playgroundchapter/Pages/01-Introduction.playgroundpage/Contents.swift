@@ -1,7 +1,7 @@
 /*:
  **Goal:** Draw a line.
  
- This playground is designed to introduce you to some commands you can use to draw some lines, make some turns. It's important, for computers, to tell it to do something in a certain order.
+ It's important, for computers, to tell it to do something in a certain order.
  
  Computers, through programming languages, typically understand a limited set of specific instructions. In the case of this lesson, our computer understands one command:
  * `forward(`*some number*`)`
@@ -13,7 +13,7 @@
 import UIKit
 import PlaygroundSupport
 
-let turtle = Turtle(name: "Bob", avatar: "🐒")
+let turtle = Turtle(name: "Waffles", avatar: "🐒")
 func forward(_ distance:Int) {
     turtle.forward(distance: Float(distance))
 }

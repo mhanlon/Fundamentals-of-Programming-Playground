@@ -1,17 +1,22 @@
 /*:
  [Previous](@previous)
  
- **Goal:** Find and fix a bug in a piece of code.
+ **Goal:** Play around!
  
- So far we've been getting the hang of drawing lines and shapes with simple commands. But what happens when we try to tell the computer to do something it doesn't understand? Even if we do it by accident, a computer doesn't know what to do with commands other than the ones it's been taught.
- 
- So how do we fix a case where we mistype something and the computer doesn't know what we're talking about?
- 
- Try and fix the following line of code, using Swift Playgrounds's red dot. If you tap the red dot alongside the bug in our code you should see a suggestion about how to fix the problem.
- 
- In this case, we can just tap the 'Fix' button and Swift Playgrounds will magically make the fix for us. But in other cases we need to track down the reason for why a piece of code isn't working.
- 
-  */
+ Now that we've played around with commands, use them to draw some interesting shapes.
+
+ You can use the following commands, play around with them and see what you can make!
+ * `forward(`*some number*`)` - go forward *some number* steps
+ * `backward(`*some number*`)` - go backward *some number* steps
+ * `right(`*some number*`)` - turn right *some number* of degrees
+ * `left(`*some number*`)` - turn left *some number* of degrees
+ * `setColor(`*some color*`)` - set the color of the pen to a color
+ * `penUp()` - lift the pen up so it doesn't draw while we move
+ * `penDown()` - put the pen back down
+ * `home()` - go to the center of the screen
+ * `setPenSize(`*some number*`)` - Change the width of the pen that draws to *some number*
+
+ */
 
 //#-hidden-code
 import UIKit
@@ -32,6 +37,25 @@ func right(_ degrees:Int) {
 
 func left(_ degrees:Int) {
     turtle.left(turnDegrees: Float(degrees))
+}
+
+func setColor(_ color:UIColor) {
+    turtle.setColor(color:color)
+}
+
+func penUp() {
+    turtle.penUp()
+}
+
+func penDown() {
+    turtle.penDown()
+}
+func home() {
+    turtle.home()
+}
+
+func setPenSize(_ penSize: Int) {
+    turtle.setPenSize(penSize:Float(penSize))
 }
 
 
@@ -55,13 +79,13 @@ public class TurtleViewController: UIViewController {
     }
 }
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:))
+//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:))
+//#-code-completion(literal, show, .gray, .blue, .red, .green, .purple, .yellow, .orange)
 //#-end-hidden-code
 
 //#-editable-code
-goforward(100)
-//#-end-editable-code
 
+//#-end-editable-code
 
 //#-hidden-code
 
@@ -77,6 +101,4 @@ vc.addTurtle(turtle)
 PlaygroundPage.current.liveView = vc
 //#-end-hidden-code
 
-//: [Next](@next)
-
-
+// We'll add the next when we add the next chapter...: [Next](@next)

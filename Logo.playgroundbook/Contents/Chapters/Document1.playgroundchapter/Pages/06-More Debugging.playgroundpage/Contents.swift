@@ -15,7 +15,7 @@
 import UIKit
 import PlaygroundSupport
 
-let turtle = Turtle(name: "Bob", avatar: "🐒")
+let turtle = Turtle(name: "Waffles", avatar: "🐒")
 func forward(_ distance:Int) {
     turtle.forward(distance: Float(distance))
 }
@@ -64,8 +64,8 @@ for _ in 1...6 {
 //#-end-editable-code
 
 //#-hidden-code
-turtle.home()
 turtle.penUp()
+turtle.home()
 turtle.backward(distance: 100)
 turtle.penDown()
 //#-end-hidden-code

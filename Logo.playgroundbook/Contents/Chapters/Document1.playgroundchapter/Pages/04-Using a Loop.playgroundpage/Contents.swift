@@ -31,7 +31,7 @@
 import UIKit
 import PlaygroundSupport
 
-let turtle = Turtle(name: "Bob", avatar: "🐒")
+let turtle = Turtle(name: "Waffles", avatar: "🐒")
 func forward(_ distance:Int) {
     turtle.forward(distance: Float(distance))
 }

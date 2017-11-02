@@ -34,36 +34,36 @@ public class TurtleViewController: UIViewController {
 //#-end-hidden-code
 
 //: Let's get a turtle for our drawing.
-let spot = Turtle(name:"Spot", avatar: "🐒")
-spot.forward(distance: 100)
-spot.right(turnDegrees: 90)
-spot.forward(distance: 100)
-spot.right(turnDegrees: 90)
+let waffles = Turtle(name:"Waffles", avatar: "🐒")
+waffles.forward(distance: 100)
+waffles.right(turnDegrees: 90)
+waffles.forward(distance: 100)
+waffles.right(turnDegrees: 90)
 
-spot.setColor(color:#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))
-spot.setPenSize(penSize: 4)
+waffles.setColor(color:#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1))
+waffles.setPenSize(penSize: 4)
 
-spot.forward(distance: 100)
-spot.right(turnDegrees: 90)
-spot.forward(distance: 100)
-spot.home()
-spot.right(turnDegrees: 180)
-spot.forward(distance: 90)
-spot.right(turnDegrees: 45)
-spot.forward(distance: 90)
-spot.home()
+waffles.forward(distance: 100)
+waffles.right(turnDegrees: 90)
+waffles.forward(distance: 100)
+waffles.home()
+waffles.right(turnDegrees: 180)
+waffles.forward(distance: 90)
+waffles.right(turnDegrees: 45)
+waffles.forward(distance: 90)
+waffles.home()
 
 for _ in 1...10 {
-    spot.forward(distance: 10)
+    waffles.forward(distance: 10)
     
-    spot.right(turnDegrees: 36)
+    waffles.right(turnDegrees: 36)
 }
 
 //#-hidden-code
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
 vc.setSpeed(0.2)
-vc.addTurtle(spot)
+vc.addTurtle(waffles)
 
 
 // Present the view controller in the Live View window

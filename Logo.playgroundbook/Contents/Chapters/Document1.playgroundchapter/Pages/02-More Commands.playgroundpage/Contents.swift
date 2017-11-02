@@ -16,7 +16,7 @@
 import UIKit
 import PlaygroundSupport
 
-let turtle = Turtle(name: "Bob", avatar: "🐒")
+let turtle = Turtle(name: "Waffles", avatar: "🐒")
 func forward(_ distance:Int) {
     turtle.forward(distance: Float(distance))
 }
@@ -80,5 +80,3 @@ vc.addTurtle(turtle)
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = vc
 //#-end-hidden-code
-
-//:
