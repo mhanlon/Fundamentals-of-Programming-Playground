@@ -6,15 +6,15 @@
  Now that we've played around with commands, use them to draw some interesting shapes.
 
  You can use the following commands, play around with them and see what you can make!
- * `forward(`*some number*`)` - go forward *some number* steps
- * `backward(`*some number*`)` - go backward *some number* steps
- * `right(`*some number*`)` - turn right *some number* of degrees
- * `left(`*some number*`)` - turn left *some number* of degrees
- * `setColor(`*some color*`)` - set the color of the pen to a color
- * `penUp()` - lift the pen up so it doesn't draw while we move
+ * `forward(`*n*`)` - go forward *n* steps
+ * `backward(`*n*`)` - go backward *n* steps
+ * `right(`*n*`)` - turn right *some number* of degrees
+ * `left(`*n*`)` - turn left *n* of degrees
+ * `setColor(`*c*`)` - set the color of the pen
+ * `penUp()` - lift the pen so it doesn't draw while we move
  * `penDown()` - put the pen back down
  * `home()` - go to the center of the screen
- * `setPenSize(`*some number*`)` - Change the width of the pen that draws to *some number*
+ * `setPenSize(`*n*`)` - Change the width of the line to *n*
 
  */
 
