@@ -81,7 +81,6 @@ public class TurtleView: UIView, CAAnimationDelegate {
             // Dequeue the commands from our turtles and start drawing them
             let commandStack = turtle.commandStack
             for command in commandStack {
-                var isHomeCommand = false
                 let startingPoint = turtle.currentPoint
                 var distance = 0.0
                 switch command {
@@ -104,7 +103,6 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 case .home:
                     turtle.currentPoint = self.center
                     turtle.heading = 0.0
-                    isHomeCommand = true
                 case .setcolor(let color):
                     turtle.penColor = color
                 case .setbg(let color):
