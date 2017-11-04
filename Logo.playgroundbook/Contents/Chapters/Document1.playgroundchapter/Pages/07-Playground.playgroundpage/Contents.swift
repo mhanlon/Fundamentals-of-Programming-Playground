@@ -58,38 +58,24 @@ func setPenSize(_ penSize: Int) {
     turtle.setPenSize(penSize:Float(penSize))
 }
 
-
-public class TurtleViewController: UIViewController {
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view = TurtleView(frame: CGRect(x: 0.0, y: 0.0, width: 500, height: 500))
-        let turtleView = self.view as! TurtleView
-        turtleView.showDegreesHelper()
-    }
-    
-    public func setSpeed(_ speed: Double) {
-        let view = self.view as! TurtleView
-        view.speed = speed
-    }
-    public func addTurtle(_ turtle: Turtle) {
-        let view = self.view as! TurtleView
-        view.addTurtle(turtle)
-        view.processCommandStack()
-    }
-}
 // Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
-vc.setSpeed(0.4)
-func setSpeed(_ speed: Double) {
+vc.setSpeed(.normal)
+
+func setSpeed(_ speed: Speed) {
     vc.setSpeed(speed)
 }
-
+func showDegreesHelper() {
+    vc.showDegreesHelper()
+}
+func hideDegreesHelper() {
+    vc.hideDegreesHelper()
+}
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:))
-//#-code-completion(literal, show, .gray, .blue, .red, .green, .purple, .yellow, .orange)
-//#-code-completion(keyword, show, for)
+//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:), hideDegreesHelper(), showDegreesHelper())
+//#-code-completion(literal, show, UIColor.gray, UIColor.blue, UIColor.red, UIColor.green, UIColor.purple, UIColor.yellow, UIColor.orange, Speed.slow, Speed.normal, Speed.fast, Speed.superfast)
+//#-code-completion(keyword, for)
 //#-end-hidden-code
 
 //#-editable-code

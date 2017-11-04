@@ -33,26 +33,6 @@ func left(_ degrees:Int) {
     turtle.left(turnDegrees: Float(degrees))
 }
 
-
-public class TurtleViewController: UIViewController {
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view = TurtleView(frame: CGRect(x: 0.0, y: 0.0, width: 500, height: 500))
-        let turtleView = self.view as! TurtleView
-        turtleView.showDegreesHelper()
-}
-    
-    public func setSpeed(_ speed: Double) {
-        let view = self.view as! TurtleView
-        view.speed = speed
-    }
-    public func addTurtle(_ turtle: Turtle) {
-        let view = self.view as! TurtleView
-        view.addTurtle(turtle)
-        view.processCommandStack()
-    }
-}
 //#-code-completion(everything, hide)
 //#-end-hidden-code
 

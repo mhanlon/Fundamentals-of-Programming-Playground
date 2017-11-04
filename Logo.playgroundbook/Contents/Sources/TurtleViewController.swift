@@ -9,7 +9,7 @@ public class TurtleViewController: UIViewController {
         turtleView.showDegreesHelper()
     }
     
-    public func setSpeed(_ speed: Double) {
+    public func setSpeed(_ speed: Speed) {
         let view = self.view as! TurtleView
         view.speed = speed
     }
@@ -34,4 +34,3 @@ public class TurtleViewController: UIViewController {
         turtleView.toggleDegreesHelper()
     }
 }
-

@@ -7,7 +7,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
     public var turtles = [Turtle]()
     public var animations:[(CALayer, CAAnimation, UIView?, CGAffineTransform?, CGPoint?)] = []
     //    public var speed = 0.00001 // For circles, especially...
-    public var speed = 0.1
+    public var speed = Speed.normal
     public var degreesHelperView: UIImageView?
     var gridView: GridView?
     public var needsDegreesHelper = false // Don't show the degree helper by default
@@ -33,8 +33,8 @@ public class TurtleView: UIView, CAAnimationDelegate {
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.gridView = GridView(frame: self.frame)
-        self.addSubview(self.gridView!)
+        //        self.gridView = GridView(frame: self.frame)
+        //        self.addSubview(self.gridView!)
     }
     
     public func showDegreesHelper() {
@@ -81,7 +81,6 @@ public class TurtleView: UIView, CAAnimationDelegate {
             // Dequeue the commands from our turtles and start drawing them
             let commandStack = turtle.commandStack
             for command in commandStack {
-                var isHomeCommand = false
                 let startingPoint = turtle.currentPoint
                 var distance = 0.0
                 switch command {
@@ -104,7 +103,6 @@ public class TurtleView: UIView, CAAnimationDelegate {
                 case .home:
                     turtle.currentPoint = self.center
                     turtle.heading = 0.0
-                    isHomeCommand = true
                 case .setcolor(let color):
                     turtle.penColor = color
                 case .setbg(let color):
@@ -197,11 +195,11 @@ public class TurtleView: UIView, CAAnimationDelegate {
         }
         let (layer, animation, avatar, transform, point) = self.animations.removeFirst()
         self.layer.addSublayer(layer)
-        animation.duration = self.speed
+        animation.duration = self.speed.rawValue
         layer.add(animation, forKey: "strokeEnd")
         
         // TODO: If the animation takes the element off screen should we bounce the avatar a bit and stop them?
-        UIView.animate(withDuration: self.speed, animations: {
+        UIView.animate(withDuration: self.speed.rawValue, animations: {
             // Turtles need to follow the path, too...
             avatar?.transform = transform!
             avatar?.center = point!

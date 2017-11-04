@@ -15,7 +15,7 @@ public class Turtle {
     var penState = PenState.pendown
     var isTurtleVisible = true
     
-    var speed: Float!
+    var speed: Speed!
     var commandStack = [TurtleCommand]()
     let avatar = TurtleAvatar(frame:CGRect(x:0,y:0, width:30, height:30))
     
@@ -26,7 +26,7 @@ public class Turtle {
         self.penColor = .black
         self.backgroundColor = .white
         self.penSize = 2.0
-        self.speed = 1.0
+        self.speed = Speed.normal
         self.heading = 0.0 // By default we will be heading "up"
         self.currentPoint = CGPoint(x: 0.0, y:0.0)
         if let av = avatar {
@@ -40,11 +40,11 @@ public class Turtle {
     public func setAvatar(_ avatar: Character) {
         self.avatar.setAvatar(String(avatar), size:nil)
     }
-
+    
     public func setAvatar(_ avatar: Character, size: Double) {
         self.avatar.setAvatar(String(avatar), size:size)
     }
-
+    
     public func forward(distance: Float) {
         let command = TurtleCommand.forward(distance)
         commandStack.append(command)
@@ -159,4 +159,13 @@ enum PenState {
     case pendown
     case penup
     case penerase
+}
+
+public enum Speed: Double {
+    case verySlow = 2.0,
+    slow = 1.0,
+    normal = 0.4,
+    fast = 0.001,
+    superFast = 0.00001,
+    instant = 0.000001
 }

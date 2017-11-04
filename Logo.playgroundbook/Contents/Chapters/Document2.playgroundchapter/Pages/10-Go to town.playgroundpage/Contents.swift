@@ -17,7 +17,7 @@ public class TurtleViewController: UIViewController {
         self.view = TurtleView(frame: CGRect(x: 0.0, y: 0.0, width: 500, height: 500))
     }
     
-    public func setSpeed(_ speed: Double) {
+    public func setSpeed(_ speed: Speed) {
         let view = self.view as! TurtleView
         view.speed = speed
     }
