@@ -11,6 +11,13 @@
 				<string>If some of your code is running a bit slow try using the `setSpeed(.fast)` command to speed things up.</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Content</key>
+				<string>Try using the `randomColor()` function when you call setColor, like so: `setColor(randomColor())`, for a bit of excitement.</string>
+			</dict>
+		</dict>
 	</array>
 </dict>
 </plist>
