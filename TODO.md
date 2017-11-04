@@ -1,4 +1,5 @@
 # TODO
+* Add autocomplete for .speed
 * Add a lesson with the coordinate plane
 * Add the object-oriented lesson in
 * Add the left turn degrees helper?
@@ -11,3 +12,4 @@
 ## TODONE
 * Free-form playground
 * Get the degrees helper showing up in the playground book again
+* Add an easy random color method...

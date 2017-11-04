@@ -73,7 +73,7 @@ func hideDegreesHelper() {
     vc.hideDegreesHelper()
 }
 //#-code-completion(everything, hide)
-//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:), hideDegreesHelper(), showDegreesHelper(), for, Speed.fast, Speed.slow, Speed.superFast)
+//#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:), hideDegreesHelper(), showDegreesHelper(), for, randomColor(), Speed.fast, Speed.slow, Speed.superFast, randomColor())
 //#-code-completion(literal, show, Speed.slow, Speed.normal, Speed.fast, Speed.superfast)
 //#-code-completion(keyword, for)
 //#-end-hidden-code
