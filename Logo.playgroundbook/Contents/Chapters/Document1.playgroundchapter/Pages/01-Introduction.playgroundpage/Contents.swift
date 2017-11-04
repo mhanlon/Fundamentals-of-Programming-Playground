@@ -54,7 +54,7 @@ forward(/*#-editable-code*/100/*#-end-editable-code*/)
 let vc = TurtleViewController()
 vc.hideDegreesHelper()
 // : We can even set the speed at which our turtle draws our commands...
-vc.setSpeed(0.4)
+vc.setSpeed(Speed.normal)
 // And then add our turtle to that view controller.
 vc.addTurtle(turtle)
 

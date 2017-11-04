@@ -46,7 +46,7 @@ for _ in 1...6 {
 //#-hidden-code
 turtle.penUp()
 turtle.home()
-turtle.backward(distance: 100)
+turtle.backward(distance: 200)
 turtle.penDown()
 //#-end-hidden-code
 
@@ -59,7 +59,7 @@ turtle.penDown()
  */
 
 //#-editable-code
-for _ in 1...8 {
+for i in 1...8 {
     forward(50)
     right(55)
 }
@@ -71,7 +71,7 @@ for _ in 1...8 {
 // Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
-vc.setSpeed(0.4)
+vc.setSpeed(Speed.normal)
 // And then add our turtle to that view controller.
 vc.addTurtle(turtle)
 
