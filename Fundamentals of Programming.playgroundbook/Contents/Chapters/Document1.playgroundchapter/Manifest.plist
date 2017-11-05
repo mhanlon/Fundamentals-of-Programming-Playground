@@ -3,16 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>Chapter One</string>
+	<string>Chapter One - Introduction to Commands</string>
 	<key>Pages</key>
 	<array>
 		<string>01-Introduction.playgroundpage</string>
 		<string>02-More Commands.playgroundpage</string>
 		<string>03-Making a Square.playgroundpage</string>
 		<string>04-Using a Loop.playgroundpage</string>
-		<string>05-Debugging.playgroundpage</string>
-		<string>06-More Debugging.playgroundpage</string>
-		<string>07-Playground.playgroundpage</string>
+		<string>05-More Loops.playgroundpage</string>
+		<string>06-Debugging.playgroundpage</string>
+		<string>07-More Debugging.playgroundpage</string>
+		<string>08-Playground.playgroundpage</string>
 	</array>
 </dict>
 </plist>

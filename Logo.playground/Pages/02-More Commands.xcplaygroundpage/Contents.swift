@@ -43,7 +43,7 @@ public class TurtleViewController: UIViewController {
         turtleView.showDegreesHelper()
 }
     
-    public func setSpeed(_ speed: Double) {
+    public func setSpeed(_ speed: Speed) {
         let view = self.view as! TurtleView
         view.speed = speed
     }
@@ -72,7 +72,7 @@ forward(/*#-editable-code*/100/*#-end-editable-code*/)
 // Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
-vc.setSpeed(0.4)
+vc.setSpeed(.normal)
 // And then add our turtle to that view controller.
 vc.addTurtle(turtle)
 

@@ -7,7 +7,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
     public var turtles = [Turtle]()
     public var animations:[(CALayer, CAAnimation, UIView?, CGAffineTransform?, CGPoint?)] = []
     //    public var speed = 0.00001 // For circles, especially...
-    public var speed = 0.1
+    public var speed = Speed.normal
     public var degreesHelperView: UIImageView?
     var gridView: GridView?
     public var needsDegreesHelper = false // Don't show the degree helper by default
@@ -33,8 +33,8 @@ public class TurtleView: UIView, CAAnimationDelegate {
     }
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        self.gridView = GridView(frame: self.frame)
-        self.addSubview(self.gridView!)
+        //        self.gridView = GridView(frame: self.frame)
+        //        self.addSubview(self.gridView!)
     }
     
     public func showDegreesHelper() {
@@ -67,7 +67,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
     }
     func positionAvatarForTurtle(turtle: Turtle) {
         let avatar = turtle.avatar
-        avatar.frame.origin = CGPoint(x: ( turtle.currentPoint.x - ( avatar.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar.frame.size.height / 2 )))
+        avatar.center = CGPoint(x: turtle.currentPoint.x, y: turtle.currentPoint.y )
         avatar.tag = turtle.tag!
         
         let radians = ( turtle.heading / 180.0 ) * .pi;
@@ -173,7 +173,7 @@ public class TurtleView: UIView, CAAnimationDelegate {
                         
                         self.addSubview(avatar!)
                     }
-                    point = CGPoint(x: ( turtle.currentPoint.x - ( avatar!.frame.size.width / 2 )), y: ( turtle.currentPoint.y - ( avatar!.frame.size.height / 2 )))
+                    point = CGPoint(x: turtle.currentPoint.x, y: turtle.currentPoint.y )
                     transform = CGAffineTransform(rotationAngle: CGFloat(radians))
                 }
                 self.animations.append( ( shapeLayer, strokeEndAnimation, avatar, transform, point ) )
@@ -195,14 +195,14 @@ public class TurtleView: UIView, CAAnimationDelegate {
         }
         let (layer, animation, avatar, transform, point) = self.animations.removeFirst()
         self.layer.addSublayer(layer)
-        animation.duration = self.speed
+        animation.duration = self.speed.rawValue
         layer.add(animation, forKey: "strokeEnd")
         
         // TODO: If the animation takes the element off screen should we bounce the avatar a bit and stop them?
-        UIView.animate(withDuration: self.speed, animations: {
+        UIView.animate(withDuration: self.speed.rawValue, animations: {
             // Turtles need to follow the path, too...
             avatar?.transform = transform!
-            avatar?.frame.origin = point!
+            avatar?.center = point!
             //
             if ( self.isShowingDegreesHelper ) {
                 self.degreesHelperView!.transform = transform!
@@ -260,3 +260,4 @@ class GridView: UIView {
         return lines
     }
 }
+

@@ -21,6 +21,10 @@ public class Turtle {
     
     public var currentPoint: CGPoint!
     
+    public convenience init() {
+        self.init(name: "Waffles", avatar:nil)
+    }
+    
     public init(name: String?, avatar: Character?) {
         self.name = name
         self.penColor = .black
@@ -165,6 +169,7 @@ public enum Speed: Double {
     case verySlow = 2.0,
     slow = 1.0,
     normal = 0.4,
+    brisk = 0.1,
     fast = 0.001,
     superFast = 0.00001,
     instant = 0.000001

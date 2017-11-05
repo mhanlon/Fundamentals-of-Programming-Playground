@@ -25,7 +25,7 @@ public class TurtleAvatar: UIView {
         }
         self.label?.sizeToFit()
     }
-
+    
     
     public override func draw(_ rect: CGRect) {
         // Draw the turtle avatar based on the heading...
@@ -69,3 +69,4 @@ extension String {
     }
     
 }
+

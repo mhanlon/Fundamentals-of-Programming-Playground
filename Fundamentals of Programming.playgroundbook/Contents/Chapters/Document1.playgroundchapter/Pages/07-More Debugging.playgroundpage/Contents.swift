@@ -1,17 +1,15 @@
 /*:
  [Previous](@previous)
  
- **Goal:** Find and fix a bug in a piece of code.
+ **Goal:** Find and fix more squirrely bugs in a piece of code.
  
- So far we've been getting the hang of drawing lines and shapes with simple commands. But what happens when we try to tell the computer to do something it doesn't understand? Even if we do it by accident, a computer doesn't know what to do with commands other than the ones it's been taught.
+ So when the computer can help us fix our errors we're in great shape. But what happens when we make a mistake in our [logic](glossary://logic)?
  
  So how do we fix a case where we mistype something and the computer doesn't know what we're talking about?
  
- Try and fix the following line of code, using Swift Playgrounds's red dot. If you tap the red dot alongside the bug in our code you should see a suggestion about how to fix the problem.
+ Try and fix the following lines of code. We want to draw an octagon. Can you figure out how to make this code draw an octagon?
  
- In this case, we can just tap the 'Fix' button and Swift Playgrounds will magically make the fix for us. But in other cases we need to track down the reason for why a piece of code isn't working.
- 
-  */
+ */
 
 //#-hidden-code
 import UIKit
@@ -39,7 +37,34 @@ func left(_ degrees:Int) {
 //#-end-hidden-code
 
 //#-editable-code
-goforward(100)
+// This is meant to draw an octagon.
+// How can we make it draw our 8-sided shape?
+for _ in 1...6 {
+    forward(50)
+    right(45)
+}
+//#-end-editable-code
+
+//#-hidden-code
+turtle.penUp()
+turtle.home()
+turtle.backward(distance: 200)
+turtle.penDown()
+//#-end-hidden-code
+/*:
+ Now this one's a little more advanced.
+ 
+ This code is also meant to draw an octagon.
+ But something's not right. How do we fix this?
+ 
+ Can you work out what this code would do and what you would change to get it to draw a proper octagon?
+ */
+
+//#-editable-code
+for i in 1...8 {
+    forward(50)
+    right(55)
+}
 //#-end-editable-code
 
 
@@ -48,15 +73,13 @@ goforward(100)
 // Once you've set some commands, you need to add it to our ViewController. So let's create a view controller for our live view...
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
-vc.setSpeed(Speed.normal)
+vc.setSpeed(Speed.brisk)
 // And then add our turtle to that view controller.
 vc.addTurtle(turtle)
 
-
+vc.addTurtle(pancake)
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = vc
 //#-end-hidden-code
 
 //: [Next](@next)
-
-
