@@ -1,7 +1,7 @@
 # TODO
 * Add autocomplete for .speed
 * Add a lesson with the coordinate plane
-* Add the object-oriented lesson in
+* Add the object-oriented lesson
 * Add the left turn degrees helper?
 * Maybe call processCommands() more frequently so we can step through?
    * Will require fixing or flushing stack...

@@ -5,9 +5,9 @@
 	<key>PlaygroundLoggingMode</key>
 	<string>Off</string>
 	<key>Name</key>
-	<string>Meet Waffles</string>
+	<string>Printing Variables</string>
 	<key>LiveViewMode</key>
-	<string>VisibleByDefault</string>
+	<string>HiddenByDefault</string>
 	<key>LiveViewEdgeToEdge</key>
 	<true/>
 </dict>

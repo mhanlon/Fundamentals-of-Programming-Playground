@@ -174,4 +174,3 @@ public enum Speed: Double {
     superFast = 0.00001,
     instant = 0.000001
 }
-

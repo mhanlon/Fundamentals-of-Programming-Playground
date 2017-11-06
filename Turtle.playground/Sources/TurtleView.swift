@@ -266,4 +266,3 @@ class GridView: UIView {
         return lines
     }
 }
-

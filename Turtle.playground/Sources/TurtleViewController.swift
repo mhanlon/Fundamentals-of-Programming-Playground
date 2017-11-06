@@ -23,15 +23,14 @@ public class TurtleViewController: UIViewController {
         let turtleView = self.view as! TurtleView
         turtleView.showDegreesHelper()
     }
-    
+
     public func hideDegreesHelper() {
         let turtleView = self.view as! TurtleView
         turtleView.hideDegreesHelper()
     }
-    
+
     public func toggleDegreesHelper() {
         let turtleView = self.view as! TurtleView
         turtleView.toggleDegreesHelper()
     }
 }
-
