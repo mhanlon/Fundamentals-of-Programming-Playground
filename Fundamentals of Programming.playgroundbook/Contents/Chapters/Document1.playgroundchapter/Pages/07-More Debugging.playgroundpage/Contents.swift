@@ -77,7 +77,6 @@ vc.setSpeed(Speed.brisk)
 // And then add our turtle to that view controller.
 vc.addTurtle(turtle)
 
-vc.addTurtle(pancake)
 // Present the view controller in the Live View window
 PlaygroundPage.current.liveView = vc
 //#-end-hidden-code
