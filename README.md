@@ -1,4 +1,4 @@
-# Logo.playground Read Me
+# Fundamentals of Programming.playground Read Me
 
 This playground is meant for teaching the fundamentals of computer programming using a Logo-like approach. The idea, especially for the first chapter, is to strip away as much noise as possible and give the student simple commands to tell the machine what to do. 
 

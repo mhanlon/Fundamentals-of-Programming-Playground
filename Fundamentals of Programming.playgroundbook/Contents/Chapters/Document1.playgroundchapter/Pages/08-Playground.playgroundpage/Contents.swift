@@ -40,7 +40,7 @@ func left(_ degrees:Int) {
 }
 
 func setColor(_ color:UIColor) {
-    turtle.setColor(color:color)
+    turtle.setColor(color)
 }
 
 func penUp() {

@@ -74,12 +74,12 @@ public class Turtle {
         commandStack.append(command)
     }
     
-    public func setColor(color: UIColor) {
+    public func setColor(_ color: UIColor) {
         let command = TurtleCommand.setcolor(color)
         commandStack.append(command)
     }
     
-    public func setBackgroundColor(color: UIColor) {
+    public func setBackgroundColor(_ color: UIColor) {
         let command = TurtleCommand.setbg(color)
         commandStack.append(command)
     }

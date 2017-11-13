@@ -1,6 +1,7 @@
 import UIKit
+import PlaygroundSupport
 
-public class TurtleViewController: UIViewController {
+public class TurtleViewController: UIViewController, PlaygroundLiveViewMessageHandler {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
