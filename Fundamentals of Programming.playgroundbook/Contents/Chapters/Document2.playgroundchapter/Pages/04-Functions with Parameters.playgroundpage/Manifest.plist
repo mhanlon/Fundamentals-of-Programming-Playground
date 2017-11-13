@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>PlaygroundLoggingMode</key>
-	<string>Off</string>
+	<string>Normal</string>
 	<key>Name</key>
-	<string>Meet Waffles</string>
+	<string>Functions with Multiple Parameters</string>
 	<key>LiveViewMode</key>
-	<string>VisibleByDefault</string>
+	<string>HiddenByDefault</string>
 	<key>LiveViewEdgeToEdge</key>
 	<true/>
 </dict>

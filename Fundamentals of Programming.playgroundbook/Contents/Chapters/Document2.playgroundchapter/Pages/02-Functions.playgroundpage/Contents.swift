@@ -22,6 +22,7 @@ func drawSquare(turtle:Turtle) {
         turtle.right(turnDegrees:90)
     }
 }
+//#-editable-code
 
 //Finish the implementation of the function drawLine() so that our
 //turtle will draw a line 50 steps long
@@ -43,16 +44,16 @@ drawSquare(turtle:norbert)
 
 // How do we call our newly finished drawLine() function?
 
+//#-end-editable-code
 //#-hidden-code
 let vc = TurtleViewController()
 // : We can even set the speed at which our turtle draws our commands...
 vc.setSpeed(Speed.normal)
 // And then add our turtle to that view controller.
-vc.addTurtle(turtle)
-
+vc.addTurtle(norbert)
+vc.hideDegreesHelper()
 PlaygroundPage.current.liveView = vc
 //#-end-hidden-code
-
 /*:
  [Next](@next)
  */

@@ -1,9 +1,9 @@
 /*:
  [Previous](@previous)
  
- **Goal:** Meet Waffles
+ **Goal:** Write a function that returns a useful value.
  
- This playground is designed to introduce you to Waffles, a turtle with a pen attached, somewhat mysteriously, to its underside. Don't ask me how it got there.
+FINISHME
  */
 
 //#-hidden-code
@@ -13,5 +13,21 @@ import PlaygroundSupport
 //#-code-completion(everything, hide)
 //#-end-hidden-code
 
+//#-editable-code
+
+func check(animal:String) -> String {
+    var checkupResult = "The " + animal + " is okay!"
+    return checkupResult
+}
+
+var result = check(animal:"monkey")
 
 
+// Notice how we re-use the variable 'result' here
+result = check(animal:"dog")
+
+//#-end-editable-code
+
+/*:
+ [Next](@next)
+ */

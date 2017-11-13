@@ -1,9 +1,9 @@
 /*:
  [Previous](@previous)
  
- **Goal:** Meet Waffles
+ **Goal:** Learn to write functions that accept multiple parameters.
  
- This playground is designed to introduce you to Waffles, a turtle with a pen attached, somewhat mysteriously, to its underside. Don't ask me how it got there.
+FINISH
  */
 
 //#-hidden-code
@@ -13,5 +13,20 @@ import PlaygroundSupport
 //#-code-completion(everything, hide)
 //#-end-hidden-code
 
+//#-editable-code
+func check(animal1:String, animal2:String) -> String {
+    var checkupResult = "The " + animal1 + " and " + animal2 + " are both okay!"
+    return checkupResult
+}
+
+var result = check(animal1:"monkey", animal2:"sea otter")
 
 
+// Notice how we re-use the variable 'result' here
+var result = check(animal1:"dog", animal2:"cat")
+
+//#-end-editable-code
+
+/*:
+ [Next](@next)
+ */

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>PlaygroundLoggingMode</key>
-	<string>Off</string>
+	<string>Normal</string>
 	<key>Name</key>
 	<string>Functions</string>
 	<key>LiveViewMode</key>
