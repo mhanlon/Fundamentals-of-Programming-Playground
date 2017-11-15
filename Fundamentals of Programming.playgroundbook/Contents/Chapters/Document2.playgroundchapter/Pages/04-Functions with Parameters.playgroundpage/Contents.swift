@@ -7,8 +7,6 @@ FINISH
  */
 
 //#-hidden-code
-import UIKit
-import PlaygroundSupport
 
 //#-code-completion(everything, hide)
 //#-end-hidden-code
@@ -23,7 +21,7 @@ var result = check(animal1:"monkey", animal2:"sea otter")
 
 
 // Notice how we re-use the variable 'result' here
-var result = check(animal1:"dog", animal2:"cat")
+result = checks(animal1:"dog", animal2:"cat")
 
 //#-end-editable-code
 

@@ -1,6 +1,8 @@
 # TODO
+* Add a cutscene after the functions work to highlight the Answers.playgroundbook
 * Add autocomplete for .speed
 * Add a lesson with the coordinate plane
+* Add a madlib-like playgroundpage
 * Add the object-oriented lesson
 * Add the left turn degrees helper?
 * Maybe call processCommands() more frequently so we can step through?

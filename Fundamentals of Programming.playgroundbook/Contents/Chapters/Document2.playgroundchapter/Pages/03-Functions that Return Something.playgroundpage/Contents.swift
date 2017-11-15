@@ -7,8 +7,6 @@ FINISHME
  */
 
 //#-hidden-code
-import UIKit
-import PlaygroundSupport
 
 //#-code-completion(everything, hide)
 //#-end-hidden-code
