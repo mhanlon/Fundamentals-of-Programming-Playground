@@ -42,10 +42,10 @@ public class Turtle {
     }
     
     public func setAvatar(_ avatar: Character) {
-        self.avatar.setAvatar(String(avatar), size:nil)
+        self.avatar.setAvatar(String(avatar), size:24.0)
     }
     
-    public func setAvatar(_ avatar: Character, size: Double) {
+    public func setAvatar(_ avatar: Character, size: Float) {
         self.avatar.setAvatar(String(avatar), size:size)
     }
     
@@ -74,12 +74,12 @@ public class Turtle {
         commandStack.append(command)
     }
     
-    public func setColor(color: UIColor) {
+    public func setColor(_ color: UIColor) {
         let command = TurtleCommand.setcolor(color)
         commandStack.append(command)
     }
     
-    public func setBackgroundColor(color: UIColor) {
+    public func setBackgroundColor(_ color: UIColor) {
         let command = TurtleCommand.setbg(color)
         commandStack.append(command)
     }
@@ -174,3 +174,4 @@ public enum Speed: Double {
     superFast = 0.00001,
     instant = 0.000001
 }
+

@@ -43,7 +43,7 @@ waffles.forward(distance: 100)
 waffles.right(turnDegrees: 90)
 
 //: We can also tell Waffles to change the pen color or the background color of the whole scene. We can also change the pen width.
-waffles.setColor(color:/*#-editable-code*/ #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)/*#-end-editable-code*/)
+waffles.setColor(/*#-editable-code*/ #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)/*#-end-editable-code*/)
 waffles.setPenSize(penSize: 4)
 
 //: To see our new configuration, we can ask Waffles to go forward again and finish off our square.

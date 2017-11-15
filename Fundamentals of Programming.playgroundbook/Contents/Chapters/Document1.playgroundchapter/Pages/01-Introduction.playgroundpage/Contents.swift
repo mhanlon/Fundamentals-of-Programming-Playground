@@ -14,10 +14,12 @@ import UIKit
 import PlaygroundSupport
 
 let turtle = Turtle(name: "Waffles", avatar: "🐒")
+/// Moves the turtle forward *n* steps
 func forward(_ distance:Int) {
     turtle.forward(distance: Float(distance))
 }
 
+/// Moves the turtle forward *n* steps
 func backward(_ distance:Int) {
     turtle.backward(distance: Float(distance))
 }

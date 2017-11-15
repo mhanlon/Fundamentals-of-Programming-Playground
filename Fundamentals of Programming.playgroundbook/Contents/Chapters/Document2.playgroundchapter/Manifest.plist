@@ -3,11 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>Chapter Two - Variables</string>
+	<string>Chapter Two - Variables &amp; Functions</string>
 	<key>Pages</key>
 	<array>
-		<string>07-Meet Waffles.playgroundpage</string>
-		<string>10-Go to town.playgroundpage</string>
+		<string>01-Variables.playgroundpage</string>
+		<string>02-Functions.playgroundpage</string>
+		<string>03-Functions that Return Something.playgroundpage</string>
+		<string>04-Functions with Parameters.playgroundpage</string>
 	</array>
 </dict>
 </plist>

@@ -78,110 +78,116 @@ public class TurtleView: UIView, CAAnimationDelegate {
     
     public func processCommandStack() {
         for turtle in self.turtles {
-            // Dequeue the commands from our turtles and start drawing them
-            let commandStack = turtle.commandStack
-            for command in commandStack {
-                let startingPoint = turtle.currentPoint
-                var distance = 0.0
-                switch command {
-                case .forward(let dist):
-                    distance = Double(dist)
-                case .backward(let dist):
-                    distance = -Double(dist)
-                case .east:
-                    turtle.heading = 90.0
-                case .west:
-                    turtle.heading = 270.0
-                case .north:
-                    turtle.heading = 0.0
-                case .south:
-                    turtle.heading = 180.0
-                case .left(let degrees):
-                    turtle.heading = ( turtle.heading - degrees )
-                case .right(let degrees):
-                    turtle.heading = ( turtle.heading + degrees )
-                case .home:
-                    turtle.currentPoint = self.center
-                    turtle.heading = 0.0
-                case .setcolor(let color):
-                    turtle.penColor = color
-                case .setbg(let color):
-                    turtle.backgroundColor = color
-                case .setpensize(let size):
-                    turtle.penSize = size
-                case .penup:
-                    turtle.penState = .penup
-                case .pendown:
-                    turtle.penState = .pendown
-                case .penerase:
-                    turtle.penState = .penerase
-                case .show:
-                    turtle.isTurtleVisible = true
-                case .hide:
-                    turtle.isTurtleVisible = false
-                }
-                
-                var pt = startingPoint!
-                if ( turtle.currentPoint != startingPoint ) {
-                    // We've gotten the home command... set our center point and exit early... this needs to be added as a command and instant animation
-                    pt = self.center
-                } else {
-                    // Update our turtle's position based on our commands
-                    pt.x = pt.x + CGFloat(sin(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
-                    pt.y = pt.y - CGFloat(cos(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
-                }
-                var penColor = turtle.penColor
-                if ( turtle.penState == .penerase ) {
-                    penColor = turtle.backgroundColor   // I'm not so sure this is right, maybe we need to delete old
-                    // paths, but maybe that's too hard (insert whiney voice)
-                }
-                
-                // Set up the actual line our turtle will draw
-                turtle.currentPoint = pt
-                let path = UIBezierPath()
-                path.move(to:startingPoint!)
-                if ( turtle.penState != .penup/* && !isHomeCommand*/ ) {
-                    path.addLine(to:turtle.currentPoint)
-                } else {
-                    path.move(to:turtle.currentPoint)
-                }
-                
-                let shapeLayer = CAShapeLayer()
-                shapeLayer.frame = self.layer.bounds
-                shapeLayer.path = path.cgPath
-                shapeLayer.strokeColor = penColor?.cgColor
-                shapeLayer.lineWidth = CGFloat(turtle.penSize)
-                shapeLayer.lineJoin = "round"
-                shapeLayer.lineCap = "round"
-                let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
-                strokeEndAnimation.fromValue = 0.0
-                strokeEndAnimation.isRemovedOnCompletion = true
-                strokeEndAnimation.delegate = self
-                
-                // Now set up the animation for our turtle avatar to follow our stroke animation
-                var avatar: UIView?
-                var transform: CGAffineTransform?
-                var point: CGPoint?
-                if ( turtle.isTurtleVisible ) {
-                    let radians = ( turtle.heading * ( .pi / 180.0 ) )
-                    avatar = self.viewWithTag(turtle.tag!)
-                    if avatar != nil {
-                        avatar!.layer.zPosition = .greatestFiniteMagnitude
-                    } else {
-                        avatar = turtle.avatar
-                        avatar!.tag = turtle.tag!
-                        
-                        self.addSubview(avatar!)
-                    }
-                    point = CGPoint(x: turtle.currentPoint.x, y: turtle.currentPoint.y )
-                    transform = CGAffineTransform(rotationAngle: CGFloat(radians))
-                }
-                self.animations.append( ( shapeLayer, strokeEndAnimation, avatar, transform, point ) )
-                
-            }
+            self.processCommandStack(turtle:turtle, shouldRunImmediately:false)
         }
         // Run the first animation and add the first layer...
         self.runNextCommand()
+    }
+    
+    public func processCommandStack(turtle: Turtle, shouldRunImmediately:Bool) {
+        // Dequeue the commands from our turtles and start drawing them
+        let commandStack = turtle.commandStack
+        for command in commandStack {
+            let startingPoint = turtle.currentPoint
+            var distance = 0.0
+            switch command {
+            case .forward(let dist):
+                distance = Double(dist)
+            case .backward(let dist):
+                distance = -Double(dist)
+            case .east:
+                turtle.heading = 90.0
+            case .west:
+                turtle.heading = 270.0
+            case .north:
+                turtle.heading = 0.0
+            case .south:
+                turtle.heading = 180.0
+            case .left(let degrees):
+                turtle.heading = ( turtle.heading - degrees )
+            case .right(let degrees):
+                turtle.heading = ( turtle.heading + degrees )
+            case .home:
+                turtle.currentPoint = self.center
+                turtle.heading = 0.0
+            case .setcolor(let color):
+                turtle.penColor = color
+            case .setbg(let color):
+                turtle.backgroundColor = color
+            case .setpensize(let size):
+                turtle.penSize = size
+            case .penup:
+                turtle.penState = .penup
+            case .pendown:
+                turtle.penState = .pendown
+            case .penerase:
+                turtle.penState = .penerase
+            case .show:
+                turtle.isTurtleVisible = true
+            case .hide:
+                turtle.isTurtleVisible = false
+            }
+            
+            var pt = startingPoint!
+            if ( turtle.currentPoint != startingPoint ) {
+                // We've gotten the home command... set our center point and exit early... this needs to be added as a command and instant animation
+                pt = self.center
+            } else {
+                // Update our turtle's position based on our commands
+                pt.x = pt.x + CGFloat(sin(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
+                pt.y = pt.y - CGFloat(cos(Double(turtle.heading) * 2 * .pi / 360.0) * distance);
+            }
+            var penColor = turtle.penColor
+            if ( turtle.penState == .penerase ) {
+                penColor = turtle.backgroundColor   // I'm not so sure this is right, maybe we need to delete old
+                // paths, but maybe that's too hard (insert whiney voice)
+            }
+            
+            // Set up the actual line our turtle will draw
+            turtle.currentPoint = pt
+            let path = UIBezierPath()
+            path.move(to:startingPoint!)
+            if ( turtle.penState != .penup/* && !isHomeCommand*/ ) {
+                path.addLine(to:turtle.currentPoint)
+            } else {
+                path.move(to:turtle.currentPoint)
+            }
+            
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.frame = self.layer.bounds
+            shapeLayer.path = path.cgPath
+            shapeLayer.strokeColor = penColor?.cgColor
+            shapeLayer.lineWidth = CGFloat(turtle.penSize)
+            shapeLayer.lineJoin = "round"
+            shapeLayer.lineCap = "round"
+            let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
+            strokeEndAnimation.fromValue = 0.0
+            strokeEndAnimation.isRemovedOnCompletion = true
+            strokeEndAnimation.delegate = self
+            
+            // Now set up the animation for our turtle avatar to follow our stroke animation
+            var avatar: UIView?
+            var transform: CGAffineTransform?
+            var point: CGPoint?
+            if ( turtle.isTurtleVisible ) {
+                let radians = ( turtle.heading * ( .pi / 180.0 ) )
+                avatar = self.viewWithTag(turtle.tag!)
+                if avatar != nil {
+                    avatar!.layer.zPosition = .greatestFiniteMagnitude
+                } else {
+                    avatar = turtle.avatar
+                    avatar!.tag = turtle.tag!
+                    
+                    self.addSubview(avatar!)
+                }
+                point = CGPoint(x: turtle.currentPoint.x, y: turtle.currentPoint.y )
+                transform = CGAffineTransform(rotationAngle: CGFloat(radians))
+            }
+            self.animations.append( ( shapeLayer, strokeEndAnimation, avatar, transform, point ) )
+        }
+        if ( shouldRunImmediately ) {
+            self.runNextCommand()
+        }
     }
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
@@ -260,3 +266,4 @@ class GridView: UIView {
         return lines
     }
 }
+

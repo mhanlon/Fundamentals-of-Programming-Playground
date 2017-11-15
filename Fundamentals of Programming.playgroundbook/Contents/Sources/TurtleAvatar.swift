@@ -17,15 +17,15 @@ public class TurtleAvatar: UIView {
         self.addSubview(self.label!)
     }
     
-    public func setAvatar(_ avatar: String, size: Double?) {
+    public func setAvatar(_ avatar: String, size: Float?) {
         self.label?.text = avatar
         if let fontSize = size {
-            let font = UIFont.systemFont(ofSize: CGFloat(fontSize))
+            let font = UIFont.systemFont(ofSize:CGFloat(fontSize))
             self.label?.font  = font
         }
         self.label?.sizeToFit()
     }
-
+    
     
     public override func draw(_ rect: CGRect) {
         // Draw the turtle avatar based on the heading...
@@ -53,13 +53,13 @@ extension String {
         for scalar in unicodeScalars {
             switch scalar.value {
             case 0x1F600...0x1F64F, // Emoticons
-            0x1F300...0x1F5FF, // Misc Symbols and Pictographs
-            0x1F680...0x1F6FF, // Transport and Map
-            0x2600...0x26FF,   // Misc symbols
-            0x2700...0x27BF,   // Dingbats
-            0xFE00...0xFE0F,   // Variation Selectors
-            0x1F900...0x1F9FF, // Supplemental Symbols and Pictographs
-            0x1F1E6...0x1F1FF: // Flags
+            0x1F300...0x1F5FF,      // Miscellaneous Symbols & Pictographs
+            0x1F680...0x1F6FF,      // Transport & Map
+            0x2600...0x26FF,        // Miscellaneous Symbols
+            0x2700...0x27BF,        // Dingbats
+            0xFE00...0xFE0F,        // Variation Selectors
+            0x1F900...0x1F9FF,      // Supplemental Symbols & Pictographs
+            0x1F1E6...0x1F1FF:      // Flags
                 return true
             default:
                 continue
@@ -69,3 +69,4 @@ extension String {
     }
     
 }
+

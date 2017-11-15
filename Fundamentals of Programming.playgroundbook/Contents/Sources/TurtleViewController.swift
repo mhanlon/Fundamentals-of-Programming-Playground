@@ -1,6 +1,7 @@
 import UIKit
+import PlaygroundSupport
 
-public class TurtleViewController: UIViewController {
+public class TurtleViewController: UIViewController, PlaygroundLiveViewMessageHandler {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,21 +17,22 @@ public class TurtleViewController: UIViewController {
     public func addTurtle(_ turtle: Turtle) {
         let view = self.view as! TurtleView
         view.addTurtle(turtle)
-        view.processCommandStack()
+        view.processCommandStack(turtle:turtle, shouldRunImmediately:true)
     }
     
     public func showDegreesHelper() {
         let turtleView = self.view as! TurtleView
         turtleView.showDegreesHelper()
     }
-
+    
     public func hideDegreesHelper() {
         let turtleView = self.view as! TurtleView
         turtleView.hideDegreesHelper()
     }
-
+    
     public func toggleDegreesHelper() {
         let turtleView = self.view as! TurtleView
         turtleView.toggleDegreesHelper()
     }
 }
+
