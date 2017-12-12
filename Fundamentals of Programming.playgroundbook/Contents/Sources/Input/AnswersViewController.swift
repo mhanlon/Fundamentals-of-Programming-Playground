@@ -55,10 +55,6 @@ class AnswersViewController: UITableViewController, PlaygroundLiveViewMessageHan
         tableView.allowsSelection = false
         
         tableView.register(MessageCell.self, forCellReuseIdentifier: MessageCell.reuseIdentifier)
-        tableView.register(InputCell.self, forCellReuseIdentifier: InputCell.reuseIdentifier)
-        tableView.register(NumberInputCell.self, forCellReuseIdentifier: NumberInputCell.reuseIdentifier)
-        tableView.register(DateInputCell.self, forCellReuseIdentifier: DateInputCell.reuseIdentifier)
-        tableView.register(ChoiceInputCell.self, forCellReuseIdentifier: ChoiceInputCell.reuseIdentifier)
         
         NotificationCenter.default.addObserver(self, selector: #selector(AnswersViewController.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AnswersViewController.keyboardDidShow(_:)), name: .UIKeyboardDidShow, object: nil)
@@ -247,12 +243,6 @@ class AnswersViewController: UITableViewController, PlaygroundLiveViewMessageHan
             var cellReuseIdentifier: String
             
             switch valueType {
-            case .number, .decimal:
-                cellReuseIdentifier = NumberInputCell.reuseIdentifier
-            case .date:
-                cellReuseIdentifier = DateInputCell.reuseIdentifier
-            case .choice(_):
-                cellReuseIdentifier = ChoiceInputCell.reuseIdentifier
             default:
                 cellReuseIdentifier = InputCell.reuseIdentifier
             }

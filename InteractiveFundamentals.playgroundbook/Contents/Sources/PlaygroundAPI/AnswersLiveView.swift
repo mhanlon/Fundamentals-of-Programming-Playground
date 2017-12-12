@@ -3,10 +3,10 @@
 import UIKit
 import PlaygroundSupport
 
-public func setupAnswersLiveView() {
+public func setupLiveView() {
     PlaygroundPage.current.liveView = {
         let answersViewController = AnswersViewController()
-        answersViewController.view.tintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        answersViewController.view.tintColor = #colorLiteral(red: 0.9960784314, green: 0.2941176471, blue: 0.1490196078, alpha: 1)
         return answersViewController
     }()
 }

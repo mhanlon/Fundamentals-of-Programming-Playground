@@ -3,11 +3,8 @@
 import PlaygroundSupport
 
 enum AnswersValueType {
-    case string
-    case number
-    case decimal
-    case date
-    case choice([String])
+    case string // Yes, I know I've sort of neutered the Answers.playgroundbook code.
+                // The idea is to simplify, for the moment.
 }
 
 extension AnswersValueType {
@@ -15,21 +12,6 @@ extension AnswersValueType {
         switch playgroundValue {
         case .string("string"):
             self = .string
-        case .string("number"):
-            self = .number
-        case .string("decimal"):
-            self = .decimal
-        case .string("date"):
-            self = .date
-        case .array(let options):
-            self = .choice(options.flatMap({ (value) -> String? in
-                if case .string(let string) = value {
-                    return string
-                }
-                else {
-                    return nil
-                }
-            }))
         default:
             return nil
         }
@@ -39,16 +21,8 @@ extension AnswersValueType {
         switch self {
         case .string:
             return .string("string")
-        case .number:
-            return .string("number")
-        case .decimal:
-            return .string("decimal")
-        case .date:
-            return .string("date")
-        case .choice(let options):
-            return  .array(options.map({ (string) -> PlaygroundValue in
-                return .string(string)
-            }))
+        default:
+            return .string("")
         }
     }
 }
