@@ -6,9 +6,9 @@
 	<string>1.0</string>
 	<key>Name</key>
 	<string>Logo</string>
-	<key>Pages</key>
-	<array>
-		<string>FirstPage.playgroundpage</string>
-	</array>
+	<key>LiveViewMode</key>
+	<string>VisibleByDefault</string>
+	<key>LiveViewEdgeToEdge</key>
+	<true/>
 </dict>
 </plist>

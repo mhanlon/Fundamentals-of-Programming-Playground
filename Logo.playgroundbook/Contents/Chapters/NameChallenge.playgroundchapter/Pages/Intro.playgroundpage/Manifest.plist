@@ -5,10 +5,10 @@
 	<key>Version</key>
 	<string>1.0</string>
 	<key>Name</key>
-	<string>Logo</string>
-	<key>Pages</key>
-	<array>
-		<string>FirstPage.playgroundpage</string>
-	</array>
+	<string>Write Your Name</string>
+	<key>LiveViewMode</key>
+	<string>VisibleByDefault</string>
+	<key>LiveViewEdgeToEdge</key>
+	<true/>
 </dict>
 </plist>
