@@ -4,6 +4,23 @@
 <dict>
 	<key>Terms</key>
 	<dict>
+		<key>comment</key>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Definition</key>
+				<string>A comment is a note you can leave in your code to explain what is going on or to remind you what you were thinking when you wrote a particular piece of code.</string>
+				<key>Title</key>
+				<string>comment</string>
+			</dict>
+			<key>FirstUse</key>
+			<dict>
+				<key>_LOCALIZABLE_</key>
+				<string>Comments</string>
+				<key>PageReference</key>
+				<string>Document2.playgroundchapter/02-Functions.playgroundpage</string>
+			</dict>
+		</dict>
 		<key>Boolean</key>
 		<dict>
 			<key>FirstUse</key>

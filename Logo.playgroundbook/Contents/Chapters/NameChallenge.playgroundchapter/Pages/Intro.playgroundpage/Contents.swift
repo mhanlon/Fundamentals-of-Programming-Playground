@@ -1,6 +1,8 @@
 /*:
- # Write your name
- **Goal**: Write your name out, using a turtle.
+ # Write my name
+ **Goal**: Write out my name, using a turtle.
+ 
+ We could use our turtle to draw shapes
  
  */
 
@@ -24,7 +26,7 @@ turtle1.forward(distance: 75)
 turtle1.right(turnDegrees: 135)
 turtle1.forward(distance: 200)
 
-
+// Move to the next character
 turtle1.penUp()
 turtle1.left(turnDegrees: 90)
 turtle1.forward(distance: 25)
@@ -47,6 +49,7 @@ turtle1.backward(distance: 35)
 turtle1.right(turnDegrees: 80)
 turtle1.backward(distance: 100)
 
+// Move to the next character
 turtle1.penUp()
 turtle1.right(turnDegrees: 100)
 turtle1.forward(distance: 25)
@@ -63,6 +66,7 @@ turtle1.forward(distance: 50)
 turtle1.left(turnDegrees: 90)
 turtle1.forward(distance: 200)
 
+// Move to the next character
 turtle1.penUp()
 turtle1.left(turnDegrees: 90)
 turtle1.forward(distance: 100)
