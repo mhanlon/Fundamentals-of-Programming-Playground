@@ -4,6 +4,16 @@
 <dict>
 	<key>Terms</key>
 	<dict>
+		<key>named parameter</key>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Definition</key>
+				<string>A parameter that has a label to make it a little more clear how a function might use the data you pass in.</string>
+				<key>Title</key>
+				<string>named parameter</string>
+			</dict>
+		</dict>
 		<key>comment</key>
 		<dict>
 			<key>_LOCALIZABLE_</key>
