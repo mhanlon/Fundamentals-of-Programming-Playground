@@ -3,11 +3,11 @@
  
  **Goal:** Learn about variables
  
- A variable is a little like a box in which you want to store something to use again later.
+ A [variable](glossary://variable) is a little like a box in which you want to store something to use again later.
  
  And what you store in your variables is going to vary depending what you're doing with your code.
  
- If your program is a math program or a calculator, you might remember a series of numbers.
+ If your program is a math program or a calculator, you might remember a series of numbers. If your program is a shopping list, you might need to remember a series of words for the items you need to buy.
  
  */
 

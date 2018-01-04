@@ -44,7 +44,7 @@ forward(/*#-editable-code*/100/*#-end-editable-code*/)
  
  What happens?
  
- Does a little red dot show up? We'll talk more about that in [a future lesson](05-Debugging).
+ Does a little red dot show up? We'll talk more about that in [a future lesson](06-Debugging).
  
  [Next](@next)
  */

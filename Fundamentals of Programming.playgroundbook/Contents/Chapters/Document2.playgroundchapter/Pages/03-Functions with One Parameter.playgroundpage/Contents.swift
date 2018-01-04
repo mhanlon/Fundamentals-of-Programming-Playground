@@ -7,7 +7,9 @@
  
  We've been using parameters already for functions like `forward(<number of steps>)`.
 
- We're going to add a [named parameter](glossary://named%20parameter) to our `drawSquare()` function so that we can make our square of different lengths.
+ We're going to add a [named parameter](glossary://named%20parameter) to our `drawSquare()` function so that we can make our square of different lengths. We have to tell our function (and coders who use it) what kind of data we expect to get passed in so we can make good use of it.
+ 
+For the moment, we'll concentrate on two types of variables, `String`s and `Int`s (words/text and numbers), but if you want more in-depth exploration of types you can [play around a little bit](03-Variable%20Types).
 */
 
 //#-hidden-code
