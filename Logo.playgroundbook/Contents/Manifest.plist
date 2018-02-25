@@ -5,6 +5,7 @@
 	<key>Chapters</key>
 	<array>
 		<string>Logo.playgroundchapter</string>
+		<string>NameChallenge.playgroundchapter</string>
 	</array>
 	<key>ContentIdentifier</key>
 	<string>com.wickedpearprogramming.playgrounds.logo</string>

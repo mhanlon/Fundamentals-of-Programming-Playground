@@ -8,9 +8,9 @@
 		<string>Document2.playgroundchapter</string>
 	</array>
 	<key>ContentIdentifier</key>
-	<string>com.wickedpearprogramming.playgrounds.fundamentalsofprogramming</string>
+	<string>ie.thecodehub.swift.fundamentals</string>
 	<key>ContentVersion</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>DeploymentTarget</key>
 	<string>ios10.0</string>
 	<key>DevelopmentRegion</key>
@@ -18,7 +18,7 @@
 	<key>ImageReference</key>
 	<string>LogoPlaygroundIcon.png</string>
 	<key>Name</key>
-	<string>Name</string>
+	<string>Fundamentals of Programming</string>
 	<key>SwiftVersion</key>
 	<string>4.0</string>
 	<key>Version</key>

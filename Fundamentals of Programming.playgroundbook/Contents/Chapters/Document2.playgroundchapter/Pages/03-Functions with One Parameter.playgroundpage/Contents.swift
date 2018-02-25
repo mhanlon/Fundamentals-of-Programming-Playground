@@ -1,13 +1,15 @@
 /*:
  [Previous](@previous)
  
- **Goal:** Learn to group useful code into functions
+ **Goal:** Learn what a parameter is
 
- Functions are a handy way to group code that we might want to use frequently.
+ [Parameter](glossary://parameter)s are values that we can pass in to a function so that we can get even more re-use out of our code.
  
- Can you name a few functions we've used already?
+ We've been using parameters already for functions like `forward(<number of steps>)`.
 
- Here's a handy function if we find ourselves wanting thinner than usual lines.
+ We're going to add a [named parameter](glossary://named%20parameter) to our `drawSquare()` function so that we can make our square of different lengths. We have to tell our function (and coders who use it) what kind of data we expect to get passed in so we can make good use of it.
+ 
+For the moment, we'll concentrate on two types of variables, `String`s and `Int`s (words/text and numbers), but if you want more in-depth exploration of types you can [play around a little bit](01a-Variable%20Types).
 */
 
 //#-hidden-code
@@ -51,24 +53,26 @@ func setPenSize(_ penSize: Int) {
 
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, forward(_:), right(_:), drawThinLine(), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:), hideDegreesHelper(), showDegreesHelper(), for, randomColor(), Speed.fast, Speed.slow, Speed.superFast, randomColor())
-//#-code-completion(literal, show, color)
+//#-code-completion(literal, show, Speed.slow, Speed.normal, Speed.fast, Speed.superfast)
 //#-code-completion(keyword, for)
 //#-end-hidden-code
-func drawThinLine() {
+func drawThinLine(length: Int) {
     // Set our pen size to super-thin before drawing the line
     setPenSize(1)
-    forward(50)
+    forward(length)
 }
+// We would call this like so (un-comment the next line to see it in action):
 
+//#-editable-code
+//drawThinLine(length:150)
+//#-end-editable-code
 /*:
- Finish the implementation of the function `drawSquare()` so that our
-turtle will draw a square with sides 50 steps long.
+ Finish the implementation of the function `drawSquare(length:Int)` so that our
+turtle will draw a square with sides of varying length.
  
-Start by deleting the '//'s before the code below to un-[comment](glossary://comment)
-our function definition.
 */
 //#-editable-code
-func drawSquare() {
+func drawSquare(length:Int) {
     //for num in 1...4 {
         // Write some code here
     //}
@@ -84,7 +88,7 @@ func drawSquare() {
 //#-end-editable-code
 
 /*:
- Now we can use this `drawSquare()` function here instead of having to re-write this code every time we want to draw a square.
+ Now we can use this `drawSquare(length:)` function here instead of having to re-write this code every time we want to draw a square.
  */
 //#-hidden-code
 let vc = TurtleViewController()

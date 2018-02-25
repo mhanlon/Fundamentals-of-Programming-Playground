@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Hints</key>
+	<array>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Content</key>
+				<string>We want to make sure, when we&apos;re deleting slashes like &apos;`//`&apos; to un-comment some code, that we don&apos;t un-comment non-code, like:  
+`// Write some code here`</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Content</key>
+				<string>Remember to keep the code for your function inside the {}&apos;s (curly braces) so that Swift knows that it belongs to the same block.</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

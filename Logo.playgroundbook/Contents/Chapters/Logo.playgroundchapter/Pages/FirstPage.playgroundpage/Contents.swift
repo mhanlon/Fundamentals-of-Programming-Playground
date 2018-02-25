@@ -5,7 +5,7 @@
  
  Here's some sample code you can mess around with and see what sort of things you might draw or do with a "turtle."
  
- Just bear in mind, if you add a new turtle you need to add it to the view controller like the others have been.
+ Just bear in mind, if you add a new turtle you need to add it to the view controller like the others have been added.
  
  For the explanation of the code and how it all works it's worth running through the playground book.
  */

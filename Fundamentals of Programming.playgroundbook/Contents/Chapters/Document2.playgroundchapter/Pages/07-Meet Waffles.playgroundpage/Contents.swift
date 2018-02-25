@@ -29,7 +29,7 @@ public class TurtleViewController: UIViewController {
     }
 }
 //#-code-completion(everything, hide)
-//#-code-completion(literal, show, "🐢", "👽", "👻", "🏃‍♀️", "🏃", "🐶", "🦋", "🐼", "🕷", "🐛", "🖍", "🗿")
+//#-code-completion(literal, show, color)
 //#-code-completion(description, show, "🐢", "👽", "👻", "🏃‍♀️", "🏃", "🐶", "🦋", "🐼", "🕷", "🐛", "🖍", "🗿")
 //#-code-completion(identifier, show, "🐢", "👽", "👻", "🏃‍♀️", "🏃", "🐶", "🦋", "🐼", "🕷", "🐛", "🖍", "🗿")
 //#-end-hidden-code

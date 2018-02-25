@@ -4,6 +4,33 @@
 <dict>
 	<key>Terms</key>
 	<dict>
+		<key>named parameter</key>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Definition</key>
+				<string>A parameter that has a label to make it a little more clear how a function might use the data you pass in.</string>
+				<key>Title</key>
+				<string>named parameter</string>
+			</dict>
+		</dict>
+		<key>comment</key>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Definition</key>
+				<string>A comment is a note you can leave in your code to explain what is going on or to remind you what you were thinking when you wrote a particular piece of code.</string>
+				<key>Title</key>
+				<string>comment</string>
+			</dict>
+			<key>FirstUse</key>
+			<dict>
+				<key>_LOCALIZABLE_</key>
+				<string>Comments</string>
+				<key>PageReference</key>
+				<string>Document2.playgroundchapter/02-Functions.playgroundpage</string>
+			</dict>
+		</dict>
 		<key>Boolean</key>
 		<dict>
 			<key>FirstUse</key>
@@ -906,6 +933,16 @@
 				<string>A named grouping of properties (the features) and methods (the behaviors) of a kind of data.</string>
 				<key>Title</key>
 				<string>type</string>
+			</dict>
+		</dict>
+		<key>statically typed language</key>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Definition</key>
+				<string>A programming language that checks the types of your variables to ensure the code you&apos;ve written matches the types of structures you&apos;re using even before you run the program.</string>
+				<key>Title</key>
+				<string>statically typed language</string>
 			</dict>
 		</dict>
 		<key>variable</key>
