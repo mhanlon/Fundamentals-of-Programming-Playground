@@ -28,7 +28,6 @@ func left(_ degrees:Int) {
 }
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:))
-//#-code-completion(literal, show, "😱")
 //#-end-hidden-code
 
 forward(/*#-editable-code*/100/*#-end-editable-code*/)

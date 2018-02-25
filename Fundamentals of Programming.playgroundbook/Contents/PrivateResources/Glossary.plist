@@ -935,6 +935,16 @@
 				<string>type</string>
 			</dict>
 		</dict>
+		<key>statically typed language</key>
+		<dict>
+			<key>_LOCALIZABLE_</key>
+			<dict>
+				<key>Definition</key>
+				<string>A programming language that checks the types of your variables to ensure the code you&apos;ve written matches the types of structures you&apos;re using even before you run the program.</string>
+				<key>Title</key>
+				<string>statically typed language</string>
+			</dict>
+		</dict>
 		<key>variable</key>
 		<dict>
 			<key>_LOCALIZABLE_</key>
