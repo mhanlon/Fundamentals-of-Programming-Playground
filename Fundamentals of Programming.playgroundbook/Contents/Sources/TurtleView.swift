@@ -86,6 +86,8 @@ public class TurtleView: UIView, CAAnimationDelegate {
     
     public func processCommandStack(turtle: Turtle, shouldRunImmediately:Bool) {
         // Dequeue the commands from our turtles and start drawing them
+        // FIXME: This needs to be queued up a little bit if we're going to support more dynamic
+        // FIXME: command-running. Wait until one drawing set finishes before starting the next
         let commandStack = turtle.commandStack
         for command in commandStack {
             let startingPoint = turtle.currentPoint
@@ -188,6 +190,9 @@ public class TurtleView: UIView, CAAnimationDelegate {
         if ( shouldRunImmediately ) {
             self.runNextCommand()
         }
+        // Now we need to flush out the turtle's command stack so we don't keep running the same commands
+        // The old, run commands will be placed into a historical stack
+        turtle.flushCommandStack()
     }
     
     public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {

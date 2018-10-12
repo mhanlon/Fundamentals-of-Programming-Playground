@@ -16,8 +16,15 @@ public class Turtle {
     var isTurtleVisible = true
     
     var speed: Speed!
-    var commandStack = [TurtleCommand]()
+    var commandStack = [TurtleCommand]() {
+        didSet {
+            commandAddedBlock?()
+        }
+    }
+    var historicalCommandStack = [TurtleCommand]()
     let avatar = TurtleAvatar(frame:CGRect(x:0,y:0, width:30, height:30))
+    
+    var commandAddedBlock: (()->())?
     
     public var currentPoint: CGPoint!
     
@@ -39,6 +46,11 @@ public class Turtle {
     }
     public convenience init(name: String?) {
         self.init(name: name, avatar: nil)
+    }
+    
+    public func flushCommandStack() {
+        self.historicalCommandStack.append(contentsOf: self.commandStack)
+        self.commandStack = []
     }
     
     public func setAvatar(_ avatar: Character) {
