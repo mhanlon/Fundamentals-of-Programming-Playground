@@ -1,3 +1,0 @@
-//  LiveView.swift
-
-setupLiveView()

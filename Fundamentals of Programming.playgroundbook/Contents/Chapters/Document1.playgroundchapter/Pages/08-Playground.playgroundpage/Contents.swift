@@ -75,7 +75,6 @@ func hideDegreesHelper() {
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, forward(_:), right(_:), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:), hideDegreesHelper(), showDegreesHelper(), for, randomColor(), Speed.fast, Speed.slow, Speed.superFast, randomColor())
 //#-code-completion(literal, show, color)
-//#-code-completion(keyword, for)
 //#-end-hidden-code
 
 //#-editable-code

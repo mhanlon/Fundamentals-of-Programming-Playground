@@ -52,7 +52,6 @@ func setPenSize(_ penSize: Int) {
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, forward(_:), right(_:), drawThinLine(), backward(_:), left(_:), setColor(_:), penUp(), penDown(), home(), setPenSize(_:), setSpeed(_:), hideDegreesHelper(), showDegreesHelper(), for, randomColor(), Speed.fast, Speed.slow, Speed.superFast, randomColor())
 //#-code-completion(literal, show, color)
-//#-code-completion(keyword, for)
 //#-end-hidden-code
 func drawThinLine() {
     // Set our pen size to super-thin before drawing the line
